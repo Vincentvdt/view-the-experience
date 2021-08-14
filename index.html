@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<button>View the Experience</button>
+<svg viewBox="0 0 500 500" xml:lang="en"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Circular Text Path</title>
+    <defs>
+        <path d="M250,400
+                 a150,150 0 0,1 0,-300a150,150 0 0,1 0,300Z"
+              id="textcircle"
+              transform="rotate(12,250,250)"/>
+    </defs>
+    <rect fill="none" height="100%" width="100%"/>
+    <text>
+        <textPath aria-label="VIEW THE EXPERIENCE"
+                  textLength="942"
+                  xlink:href="#textcircle">VIEW THE EXPERIENCE.
+        </textPath>
+    </text>
+</svg>
+
+<script crossorigin="anonymous"
+        integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg=="
+        referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+<script>
+
+    const circleSvg = document.querySelector('svg');
+    const btn = document.querySelector('button');
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    window.addEventListener('mousemove', (event) => {
+        /*       circleSvg.style.top = event.clientY - 45 + 'px';
+               circleSvg.style.left = event.clientX - 45 + 'px';*/
+        mouseY = (event.clientY / 16) - (45 / 16) + 'rem';
+        mouseX = (event.clientX / 16) - (45 / 16) + 'rem';
+    })
+
+    function mouseMove() {
+
+        circleSvg.style.top = mouseY;
+        circleSvg.style.left = mouseX;
+
+        window.requestAnimationFrame(mouseMove);
+    }
+
+    mouseMove();
+
+    var tl = gsap.timeline({defaults: {ease: "power2.inOut"}});
+    tl.to(circleSvg, {width: 0, opacity: 0})
+    tl.to('body, button', {background: 'white'})
+    tl.pause();
+
+    btn.addEventListener('click', () => {
+        tl.play();
+    })
+
+
+</script>
+</body>
+</html>

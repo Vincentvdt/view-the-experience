@@ -1,0 +1,60 @@
+body {
+    background: rgb(0, 79, 248);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+* {
+    cursor: none;
+}
+
+
+svg {
+    width: 100px;
+    position: absolute;
+    animation: rotation 5s infinite linear;
+    pointer-events: none;
+    transition: top .3s, left .3s, width .3s;
+    transition-timing-function: ease-out;
+}
+
+
+text {
+    font-size: 4em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    fill: rgb(138, 175, 255);
+    transition: fill .3s ease-out;
+}
+
+button {
+    background: rgb(0, 69, 219);
+    border: none;
+    outline: none;
+    padding: 2em;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    letter-spacing: .3em;
+    font-size: .9rem;
+}
+
+button:hover ~ svg {
+    width: 150px;
+}
+
+button:hover ~ svg text {
+        fill: yellow;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+
+}
